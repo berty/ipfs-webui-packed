@@ -11,28 +11,33 @@
     <a href="https://crpt.fyi/berty-discord"><img alt="discord" src="https://img.shields.io/badge/discord-gray?logo=discord" /></a>
     <a href="https://github.com/berty"><img alt="github" src="https://img.shields.io/badge/@berty-471961?logo=github" /></a>
     <a href="https://twitter.com/berty"><img alt="twitter" src="https://img.shields.io/twitter/follow/berty?label=%40berty&style=flat&logo=twitter" /></a>
-    <a href="https://pkg.go.dev/berty.tech/REPLACEME?tab=subdirectories"><img alt="go.dev reference" src="https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white" /></a>
-    <a href="https://github.com/berty/REPLACEME/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/berty/REPLACEME" /></a>
+    <a href="https://pkg.go.dev/berty.tech/ipfs-webui-packed?tab=doc"><img alt="go.dev reference" src="https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white" /></a>
+    <a href="https://github.com/berty/ipfs-webui-packed/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/berty/ipfs-webui-packed" /></a>
 
 </p>
 
-> TODO: short headline.
+> [IPFS webui](https://github.com/ipfs-shipyard/ipfs-webui) embedded in an easy-to-import golang library.
 
-TODO: short intro for non-tech. what is this repo about.
+This repo allows another golang project to embed the IPFS webui easily.
 
-TODO: optional clarification for techs, if the short intro is not enough to understand what is this repo about.
+The "master" branch contains the generation and release scripts but is not directly usable.
 
 ## Install
 
-TODO
+`go get berty.tech/ipfs-webui-packed`
 
 ## Getting Started
 
-TODO
+```golang
+import ipfswebui "berty.tech/ipfs-webui-packed"
+
+dir := http.FileServer(ipfswebui.Dir())
+http.ListenAndServe(":3000", dir)
+```
 
 ### Troubleshooting
 
-_(please use [issues](https://github.com/berty/REPLACEME))_
+_(please use [issues](https://github.com/berty/ipfs-webui-packed))_
 
 ## Development
 
@@ -57,6 +62,12 @@ This repository falls under the Berty [Code of Conduct](https://github.com/berty
 You can contact us on the [`#dev-💻`](https://crpt.fyi/berty-dev-discord) channel on [discord](https://crpt.fyi/berty-discord).
 
 ## License
+
+### ipfs-webui
+
+This project embeds ipfs-webui which is licensed under MIT (https://github.com/ipfs-shipyard/ipfs-webui/blob/master/LICENSE).
+
+### Rest of the repo (scripts and helpers)
 
 Dual-licensed under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) and [MIT](https://opensource.org/licenses/MIT) terms.
 
