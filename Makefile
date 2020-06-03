@@ -15,8 +15,10 @@ generate: clone
 	rm -rf clone/build/locales/[a-d]* clone/build/locales/[f-zR]*
 	find clone/build \( -name "*.map" -or -name "*.eot" -or -name "*.woff" -or -name "*.woff2" -or -name "*.otf" \) -delete
 	du -hs clone/build
+	mv clone/build webui
 	# pack
-	pkger -include /clone/build
+	rm -f pkged.go
+	pkger
 
 .PHONY: release
 release: generate
