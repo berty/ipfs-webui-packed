@@ -21,15 +21,21 @@ generate: clone
 	pkger
 
 .PHONY: release
-release: generate
+release: generate _release
+
+.PHONY: _release
+_release:
+	git branch -D $(GIT_BRANCH) || true
 	git checkout -b $(GIT_BRANCH)
+	pkger
 	git add -f pkged.go
 	touch clone/go.mod
 	go mod tidy
 	git commit -sam "chore: generate release ($(WEBUI_REF))"
-	git push -u origin $(GIT_BRANCH)
+	git push -u origin $(GIT_BRANCH) -f
+	git tag -d $(GIT_TAG) || true
 	git tag $(GIT_TAG)
-	git push --tags
+	git push --tags -f
 	git checkout master
 
 .PHONY: re
