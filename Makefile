@@ -6,6 +6,7 @@ GIT_TAG ?= $(GIT_BRANCH)$(TAG_SUFFIX)
 
 .PHONY: generate
 generate: clone
+	cd clone && git fetch origin
 	cd clone && git checkout "$(WEBUI_REF)"
 	cd clone && npm install
 	cd clone && SKIP_PREFLIGHT_CHECK=true npm run build
@@ -43,7 +44,7 @@ _release:
 re: clean generate
 
 clone:
-	git clone --single-branch --branch "$(WEBUI_REF)" https://github.com/ipfs-shipyard/ipfs-webui clone
+	git clone --single-branch https://github.com/ipfs-shipyard/ipfs-webui clone
 
 .PHONY: clean
 clean:
